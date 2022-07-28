@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#                  __ _       _                        _
+#  __      _____  / _(_)     | | __ _ _   _ _ __   ___| |__   ___ _ __
+#  \ \ /\ / / _ \| |_| |_____| |/ _` | | | | '_ \ / __| '_ \ / _ \ '__|
+#   \ V  V / (_) |  _| |_____| | (_| | |_| | | | | (__| | | |  __/ |
+#    \_/\_/ \___/|_| |_|     |_|\__,_|\__,_|_| |_|\___|_| |_|\___|_|
+#
+# Launches wofi in a much cleaner way
+
+pgrep wofi && killall wofi && exit
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+POSITION=0
+YOFF=0
+XOFF=0
+
+if [ -r "$DIR/config" ]; then
+    source "$DIR/config"
+elif [ -r "$HOME/.config/wofi/menu" ]; then
+    source "$HOME/.config/wofi/menu"
+else 
+    echo "WARNING: config file not found! Using default values."
+fi
+
+exec wofi

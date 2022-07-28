@@ -1,0 +1,124 @@
+  ////////////////////////////////////////////
+//  __        ___ __   ______    _    ____    //
+//  \ \      / / \\ \ / / __ )  / \  |  _ \   //
+//   \ \ /\ / / _ \\ V /|  _ \ / _ \ | |_) |  //
+//    \ V  V / ___ \| | | |_) / ___ \|  _ <   //
+//     \_/\_/_/   \_\_| |____/_/   \_\_| \_\  //
+//                                            //
+  ////////////////////////////////////////////
+                                       
+//ALICE'S CONFIGURATION OF WAYBAR
+//REQUIRES FONT-AWESOME TO APPEAR CORRECT!!!
+
+{
+
+//BAR SETTINGS ---------- {{{
+  //"layer": "top",
+  "position": "top",
+  "spacing": 1,
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "height": 10,
+//}}}
+
+//MODULE SELECTION ---------- {{{
+  "modules-left": [
+      "custom/launcher",
+      "sway/workspaces"
+      ],
+
+  "modules-right": [
+      "tray",
+      "network",
+      "pulseaudio",
+      "cpu",
+      "memory",
+      "temperature",
+      "clock"
+      ],
+//}}}
+
+//MODULE CONFIGURATION ---------- {{{
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        },
+        "format-icons": {
+            "1": "λ",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V",
+        }
+    },
+
+    "clock": {
+        "format": "{:%a %m-%d-%y %I:%M %p}"
+    },
+
+    "memory": {
+        "interval": 3,
+        "format": " {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "cpu": {
+        "interval": 3,
+        "format": " {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "temperature": {
+        "interval": 3,
+        "thermal-zone": 2,
+        "critical-threshold": 85,
+        "format": "{temperatureC}°C"
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": " {essid}",
+        "format-ethernet": "{ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltop-format": "{ifname}",
+        "on-click": "wofi-wifi-menu"
+    },
+    
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-muted": " {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "custom/launcher": {
+        "format": " ",
+        "on-click": "wofi_launcher",
+        "tooltip": false
+    }
+}}}
+
+}
